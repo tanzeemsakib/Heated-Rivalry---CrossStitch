@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SuspectData" format=3 uid="uid://dc5hk0ip634so"]
+
+[ext_resource type="Texture2D" uid="uid://dsx4re6h1akik" path="res://Assets/Suspect-1 portrait.png" id="1_0p7ge"]
+[ext_resource type="Script" uid="uid://p6kfjmld24c3" path="res://Script/suspect_data.gd" id="1_4pu6x"]
+
+[resource]
+script = ExtResource("1_4pu6x")
+suspect_name = "Satoshi"
+badge_id = "6625"
+years_at_company = 4
+stated_reason = "Hello..."
+portrait = ExtResource("1_0p7ge")
+pc_password = "sunflower22"
+parking_permit = "P-4471"
+denial_line_badge = "...I think my badge was updated recently."
+denial_line_years = "I've been here for years, I tell you."
+denial_line_photo = "That photo is old, just not a flattering angle."
+denial_line_password = "Oh, PC and stuff, I can never remember those."
+denial_line_parking = "I might have mixed up spaces."
+denial_line_phone = "...what did they say?"
+metadata/_custom_type_script = "uid://p6kfjmld24c3"

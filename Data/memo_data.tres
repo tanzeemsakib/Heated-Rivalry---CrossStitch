@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MemoData" format=3 uid="uid://ddnunr6rsoo5s"]
+
+[ext_resource type="Script" uid="uid://dn4exgnm38qcg" path="res://Script/memo_data.gd" id="1_0hasf"]
+
+[resource]
+script = ExtResource("1_0hasf")
+metadata/_custom_type_script = "uid://dn4exgnm38qcg"

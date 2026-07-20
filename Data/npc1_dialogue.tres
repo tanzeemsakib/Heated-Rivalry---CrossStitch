@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://dmfun0djdaukn"]
+
+[ext_resource type="Script" uid="uid://dey1dos3thffw" path="res://Script/dialogue_line.gd" id="1_qp85v"]
+[ext_resource type="Script" uid="uid://b43od3lve03jo" path="res://Script/dialogue_data.gd" id="2_fkyvt"]
+[ext_resource type="Texture2D" uid="uid://dabpbtj5kb5gc" path="res://Assets/CEO npc - 1 PORTRAIT.png" id="2_tflki"]
+[ext_resource type="Texture2D" uid="uid://bs52m5uyy4rsd" path="res://Assets/Main character portrait.png" id="3_y2p74"]
+
+[sub_resource type="Resource" id="Resource_tflki"]
+script = ExtResource("1_qp85v")
+text = "Futile attempt, the meeting will kick off in a few minutes."
+metadata/_custom_type_script = "uid://dey1dos3thffw"
+
+[sub_resource type="Resource" id="Resource_y2p74"]
+script = ExtResource("1_qp85v")
+speaker = "player"
+text = "Well I only plan to kick you off from here."
+metadata/_custom_type_script = "uid://dey1dos3thffw"
+
+[resource]
+script = ExtResource("2_fkyvt")
+npc_name = "CEO"
+npc_portrait = ExtResource("2_tflki")
+player_portrait = ExtResource("3_y2p74")
+lines = Array[ExtResource("1_qp85v")]([SubResource("Resource_tflki"), SubResource("Resource_y2p74")])
+metadata/_custom_type_script = "uid://b43od3lve03jo"
