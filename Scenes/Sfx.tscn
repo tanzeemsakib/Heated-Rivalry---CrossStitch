@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://by3anbcfetrev"]
+
+[ext_resource type="Script" uid="uid://cp1csjf6mvg0v" path="res://sfx.gd" id="1_knqv1"]
+[ext_resource type="AudioStream" uid="uid://b5fub8wv72bn1" path="res://Assets/47313572-8-bit-game-sfx-sound-8-269967.mp3" id="2_bhng4"]
+
+[node name="Node" type="Node" unique_id=85539313]
+script = ExtResource("1_knqv1")
+click_sound = ExtResource("2_bhng4")

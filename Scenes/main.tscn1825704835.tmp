@@ -1,0 +1,612 @@
+[gd_scene format=3 uid="uid://dbfbbmiqva6qd"]
+
+[ext_resource type="Script" uid="uid://knaelsw0oygf" path="res://Script/player.gd" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://c2hbf6kt3i7bk" path="res://Script/walls.gd" id="1_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://b846ixywqvi28" path="res://Assets/Main character walking sprite.png" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://cjckpeot2cn8b" path="res://Script/camera_rig.gd" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://c8ig2ex8pm865" path="res://Assets/Main character idel sprite.png" id="3_k12tt"]
+[ext_resource type="Script" uid="uid://c3hes7kgjrqq7" path="res://Script/suspect_interactable.gd" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://de44tfaof4hp3" path="res://Script/interview_ui.gd" id="5_21xkr"]
+[ext_resource type="Resource" uid="uid://dc5hk0ip634so" path="res://Data/suspect_1.tres" id="5_344ge"]
+[ext_resource type="Texture2D" uid="uid://d2q7lhsfxskpq" path="res://Assets/CEO npc -1 idle sprite - 1.png" id="6_b3802"]
+[ext_resource type="Script" uid="uid://1cg034g8byhh" path="res://Script/npc_interactable.gd" id="6_hibaj"]
+[ext_resource type="Script" uid="uid://bqthlk6nu8oen" path="res://Script/end_screen.gd" id="7_6bp64"]
+[ext_resource type="Texture2D" uid="uid://buqqpq1jjbgs1" path="res://Assets/CEO npc -1 idle sprite - 2.png" id="7_fevyy"]
+[ext_resource type="Script" uid="uid://sxyjn47hiiny" path="res://Script/draggable_card.gd" id="8_6iyac"]
+[ext_resource type="Texture2D" uid="uid://bqxretiyl7smw" path="res://icon.svg" id="8_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://d23j70x0ol7la" path="res://Assets/Suspect-1 idle sprite.png" id="8_h1bgf"]
+[ext_resource type="Script" uid="uid://dkjrypsp83l3k" path="res://Script/perforation_line.gd" id="8_hptm8"]
+[ext_resource type="Resource" uid="uid://ddnunr6rsoo5s" path="res://Data/memo_data.tres" id="8_ynf5e"]
+[ext_resource type="Script" uid="uid://1pwrwhnyrmxm" path="res://Script/field_hotspot.gd" id="9_fdnlq"]
+[ext_resource type="ArrayMesh" uid="uid://d2ebcr7delhpd" path="res://Assets/Office_Table_White_1x1_01.obj" id="14_jkdf5"]
+[ext_resource type="Script" uid="uid://cdtebjdrlauvo" path="res://Script/status_menu.gd" id="14_wsu2k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t2dwb"]
+height = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bgf"]
+atlas = ExtResource("3_k12tt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3802"]
+atlas = ExtResource("3_k12tt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjvhh"]
+atlas = ExtResource("2_8gbba")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kry3j"]
+atlas = ExtResource("2_8gbba")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21xkr"]
+atlas = ExtResource("2_8gbba")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2dwb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3802")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjvhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kry3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21xkr")
+}],
+"loop": 1,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2dwb"]
+size = Vector3(0.5, 3, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fevyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_b3802")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fevyy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fevyy"]
+atlas = ExtResource("8_h1bgf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hibaj"]
+atlas = ExtResource("8_h1bgf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m2va7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fevyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hibaj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynf5e"]
+bg_color = Color(0.1764706, 0.5411765, 0.24313726, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1ilt"]
+bg_color = Color(0.1764706, 0.5411765, 0.24313726, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6iyac"]
+bg_color = Color(0.1764706, 0.5411765, 0.24313726, 0.8235294)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k12tt"]
+bg_color = Color(0.5411765, 0.24313726, 0.1764706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1bgf"]
+bg_color = Color(0.5411765, 0.24313726, 0.1764706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3802"]
+bg_color = Color(0.5411765, 0.24313726, 0.1764706, 0.8235294)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdnlq"]
+bg_color = Color(0.5411765, 0.24313726, 0.1764706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkdf5"]
+bg_color = Color(0.5411765, 0.24313726, 0.1764706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsu2k"]
+bg_color = Color(0.5411765, 0.24313726, 0.1764706, 0.8235294)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fevyy"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.5411765, 0.24313726, 0.1764706, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jkdf5"]
+
+[sub_resource type="Sky" id="Sky_fdnlq"]
+sky_material = SubResource("ProceduralSkyMaterial_jkdf5")
+
+[sub_resource type="Environment" id="Environment_m2va7"]
+sky = SubResource("Sky_fdnlq")
+ambient_light_source = 3
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jkdf5"]
+data = PackedVector3Array(-0.79999995, 0.9, -0.5, -0.79999995, 1.1, 0.5, -0.79999995, 0.9, 0.5, -0.79999995, 0.9, -0.5, -0.79999995, 1.1, -0.5, -0.79999995, 1.1, 0.5, -0.7, 0.9, 0.5, -0.7, 1.1, 0.59999996, -0.7, 0.9, 0.59999996, -0.7, 0.9, 0.5, -0.7, 1.1, 0.5, -0.7, 1.1, 0.59999996, -0.7, 0.9, -0.59999996, -0.7, 1.1, -0.5, -0.7, 0.9, -0.5, -0.7, 0.9, -0.59999996, -0.7, 1.1, -0.59999996, -0.7, 1.1, -0.5, -0.59999996, 0, 0.29999998, -0.59999996, 0.099999994, 0.39999998, -0.59999996, 0, 0.39999998, -0.59999996, 0, 0.29999998, -0.59999996, 0.099999994, 0.29999998, -0.59999996, 0.099999994, 0.39999998, -0.59999996, 0, -0.39999998, -0.59999996, 0.099999994, -0.29999998, -0.59999996, 0, -0.29999998, -0.59999996, 0, -0.39999998, -0.59999996, 0.099999994, -0.39999998, -0.59999996, 0.099999994, -0.29999998, -0.59999996, 0.099999994, 0.29999998, -0.59999996, 0.9, 0.39999998, -0.59999996, 0.099999994, 0.39999998, -0.59999996, 0.099999994, 0.29999998, -0.59999996, 0.9, 0.29999998, -0.59999996, 0.9, 0.39999998, -0.59999996, 0.099999994, -0.39999998, -0.59999996, 0.9, -0.29999998, -0.59999996, 0.099999994, -0.29999998, -0.59999996, 0.099999994, -0.39999998, -0.59999996, 0.9, -0.39999998, -0.59999996, 0.9, -0.29999998, 0.5, 0, 0.29999998, 0.5, 0.099999994, 0.39999998, 0.5, 0, 0.39999998, 0.5, 0, 0.29999998, 0.5, 0.099999994, 0.29999998, 0.5, 0.099999994, 0.39999998, 0.5, 0, -0.39999998, 0.5, 0.099999994, -0.29999998, 0.5, 0, -0.29999998, 0.5, 0, -0.39999998, 0.5, 0.099999994, -0.39999998, 0.5, 0.099999994, -0.29999998, 0.5, 0.099999994, 0.29999998, 0.5, 0.9, 0.39999998, 0.5, 0.099999994, 0.39999998, 0.5, 0.099999994, 0.29999998, 0.5, 0.9, 0.29999998, 0.5, 0.9, 0.39999998, 0.5, 0.099999994, -0.39999998, 0.5, 0.9, -0.29999998, 0.5, 0.099999994, -0.29999998, 0.5, 0.099999994, -0.39999998, 0.5, 0.9, -0.39999998, 0.5, 0.9, -0.29999998, -0.5, 0, 0.29999998, -0.5, 0, 0.39999998, -0.5, 0.099999994, 0.39999998, -0.5, 0, 0.29999998, -0.5, 0.099999994, 0.39999998, -0.5, 0.099999994, 0.29999998, -0.5, 0, -0.39999998, -0.5, 0, -0.29999998, -0.5, 0.099999994, -0.29999998, -0.5, 0, -0.39999998, -0.5, 0.099999994, -0.29999998, -0.5, 0.099999994, -0.39999998, -0.5, 0.099999994, 0.29999998, -0.5, 0.099999994, 0.39999998, -0.5, 0.9, 0.39999998, -0.5, 0.099999994, 0.29999998, -0.5, 0.9, 0.39999998, -0.5, 0.9, 0.29999998, -0.5, 0.099999994, -0.39999998, -0.5, 0.099999994, -0.29999998, -0.5, 0.9, -0.29999998, -0.5, 0.099999994, -0.39999998, -0.5, 0.9, -0.29999998, -0.5, 0.9, -0.39999998, 0.59999996, 0, 0.29999998, 0.59999996, 0, 0.39999998, 0.59999996, 0.099999994, 0.39999998, 0.59999996, 0, 0.29999998, 0.59999996, 0.099999994, 0.39999998, 0.59999996, 0.099999994, 0.29999998, 0.59999996, 0, -0.39999998, 0.59999996, 0, -0.29999998, 0.59999996, 0.099999994, -0.29999998, 0.59999996, 0, -0.39999998, 0.59999996, 0.099999994, -0.29999998, 0.59999996, 0.099999994, -0.39999998, 0.59999996, 0.099999994, 0.29999998, 0.59999996, 0.099999994, 0.39999998, 0.59999996, 0.9, 0.39999998, 0.59999996, 0.099999994, 0.29999998, 0.59999996, 0.9, 0.39999998, 0.59999996, 0.9, 0.29999998, 0.59999996, 0.099999994, -0.39999998, 0.59999996, 0.099999994, -0.29999998, 0.59999996, 0.9, -0.29999998, 0.59999996, 0.099999994, -0.39999998, 0.59999996, 0.9, -0.29999998, 0.59999996, 0.9, -0.39999998, 0.7, 0.9, 0.5, 0.7, 0.9, 0.59999996, 0.7, 1.1, 0.59999996, 0.7, 0.9, 0.5, 0.7, 1.1, 0.59999996, 0.7, 1.1, 0.5, 0.7, 0.9, -0.59999996, 0.7, 0.9, -0.5, 0.7, 1.1, -0.5, 0.7, 0.9, -0.59999996, 0.7, 1.1, -0.5, 0.7, 1.1, -0.59999996, 0.79999995, 0.9, -0.5, 0.79999995, 0.9, 0.5, 0.79999995, 1.1, 0.5, 0.79999995, 0.9, -0.5, 0.79999995, 1.1, 0.5, 0.79999995, 1.1, -0.5, -0.7, 1.1, 0.59999996, 0.7, 0.9, 0.59999996, -0.7, 0.9, 0.59999996, -0.7, 1.1, 0.59999996, 0.7, 1.1, 0.59999996, 0.7, 0.9, 0.59999996, -0.79999995, 1.1, 0.5, -0.7, 0.9, 0.5, -0.79999995, 0.9, 0.5, -0.79999995, 1.1, 0.5, -0.7, 1.1, 0.5, -0.7, 0.9, 0.5, 0.7, 1.1, 0.5, 0.79999995, 0.9, 0.5, 0.7, 0.9, 0.5, 0.7, 1.1, 0.5, 0.79999995, 1.1, 0.5, 0.79999995, 0.9, 0.5, -0.59999996, 0.099999994, 0.39999998, -0.5, 0, 0.39999998, -0.59999996, 0, 0.39999998, -0.59999996, 0.099999994, 0.39999998, -0.5, 0.099999994, 0.39999998, -0.5, 0, 0.39999998, -0.59999996, 0.9, 0.39999998, -0.5, 0.099999994, 0.39999998, -0.59999996, 0.099999994, 0.39999998, -0.59999996, 0.9, 0.39999998, -0.5, 0.9, 0.39999998, -0.5, 0.099999994, 0.39999998, 0.5, 0.099999994, 0.39999998, 0.59999996, 0, 0.39999998, 0.5, 0, 0.39999998, 0.5, 0.099999994, 0.39999998, 0.59999996, 0.099999994, 0.39999998, 0.59999996, 0, 0.39999998, 0.5, 0.9, 0.39999998, 0.59999996, 0.099999994, 0.39999998, 0.5, 0.099999994, 0.39999998, 0.5, 0.9, 0.39999998, 0.59999996, 0.9, 0.39999998, 0.59999996, 0.099999994, 0.39999998, -0.59999996, 0.099999994, -0.29999998, -0.5, 0, -0.29999998, -0.59999996, 0, -0.29999998, -0.59999996, 0.099999994, -0.29999998, -0.5, 0.099999994, -0.29999998, -0.5, 0, -0.29999998, -0.59999996, 0.9, -0.29999998, -0.5, 0.099999994, -0.29999998, -0.59999996, 0.099999994, -0.29999998, -0.59999996, 0.9, -0.29999998, -0.5, 0.9, -0.29999998, -0.5, 0.099999994, -0.29999998, 0.5, 0.099999994, -0.29999998, 0.59999996, 0, -0.29999998, 0.5, 0, -0.29999998, 0.5, 0.099999994, -0.29999998, 0.59999996, 0.099999994, -0.29999998, 0.59999996, 0, -0.29999998, 0.5, 0.9, -0.29999998, 0.59999996, 0.099999994, -0.29999998, 0.5, 0.099999994, -0.29999998, 0.5, 0.9, -0.29999998, 0.59999996, 0.9, -0.29999998, 0.59999996, 0.099999994, -0.29999998, -0.59999996, 0.099999994, 0.29999998, -0.59999996, 0, 0.29999998, -0.5, 0, 0.29999998, -0.59999996, 0.099999994, 0.29999998, -0.5, 0, 0.29999998, -0.5, 0.099999994, 0.29999998, -0.59999996, 0.9, 0.29999998, -0.59999996, 0.099999994, 0.29999998, -0.5, 0.099999994, 0.29999998, -0.59999996, 0.9, 0.29999998, -0.5, 0.099999994, 0.29999998, -0.5, 0.9, 0.29999998, 0.5, 0.099999994, 0.29999998, 0.5, 0, 0.29999998, 0.59999996, 0, 0.29999998, 0.5, 0.099999994, 0.29999998, 0.59999996, 0, 0.29999998, 0.59999996, 0.099999994, 0.29999998, 0.5, 0.9, 0.29999998, 0.5, 0.099999994, 0.29999998, 0.59999996, 0.099999994, 0.29999998, 0.5, 0.9, 0.29999998, 0.59999996, 0.099999994, 0.29999998, 0.59999996, 0.9, 0.29999998, -0.59999996, 0.099999994, -0.39999998, -0.59999996, 0, -0.39999998, -0.5, 0, -0.39999998, -0.59999996, 0.099999994, -0.39999998, -0.5, 0, -0.39999998, -0.5, 0.099999994, -0.39999998, -0.59999996, 0.9, -0.39999998, -0.59999996, 0.099999994, -0.39999998, -0.5, 0.099999994, -0.39999998, -0.59999996, 0.9, -0.39999998, -0.5, 0.099999994, -0.39999998, -0.5, 0.9, -0.39999998, 0.5, 0.099999994, -0.39999998, 0.5, 0, -0.39999998, 0.59999996, 0, -0.39999998, 0.5, 0.099999994, -0.39999998, 0.59999996, 0, -0.39999998, 0.59999996, 0.099999994, -0.39999998, 0.5, 0.9, -0.39999998, 0.5, 0.099999994, -0.39999998, 0.59999996, 0.099999994, -0.39999998, 0.5, 0.9, -0.39999998, 0.59999996, 0.099999994, -0.39999998, 0.59999996, 0.9, -0.39999998, -0.79999995, 1.1, -0.5, -0.79999995, 0.9, -0.5, -0.7, 0.9, -0.5, -0.79999995, 1.1, -0.5, -0.7, 0.9, -0.5, -0.7, 1.1, -0.5, 0.7, 1.1, -0.5, 0.7, 0.9, -0.5, 0.79999995, 0.9, -0.5, 0.7, 1.1, -0.5, 0.79999995, 0.9, -0.5, 0.79999995, 1.1, -0.5, -0.7, 1.1, -0.59999996, -0.7, 0.9, -0.59999996, 0.7, 0.9, -0.59999996, -0.7, 1.1, -0.59999996, 0.7, 0.9, -0.59999996, 0.7, 1.1, -0.59999996, -0.5, 0, 0.39999998, -0.59999996, 0, 0.29999998, -0.59999996, 0, 0.39999998, -0.5, 0, 0.39999998, -0.5, 0, 0.29999998, -0.59999996, 0, 0.29999998, 0.59999996, 0, 0.39999998, 0.5, 0, 0.29999998, 0.5, 0, 0.39999998, 0.59999996, 0, 0.39999998, 0.59999996, 0, 0.29999998, 0.5, 0, 0.29999998, -0.5, 0, -0.29999998, -0.59999996, 0, -0.39999998, -0.59999996, 0, -0.29999998, -0.5, 0, -0.29999998, -0.5, 0, -0.39999998, -0.59999996, 0, -0.39999998, 0.59999996, 0, -0.29999998, 0.5, 0, -0.39999998, 0.5, 0, -0.29999998, 0.59999996, 0, -0.29999998, 0.59999996, 0, -0.39999998, 0.5, 0, -0.39999998, 0.7, 0.9, 0.59999996, -0.7, 0.9, 0.5, -0.7, 0.9, 0.59999996, 0.7, 0.9, 0.59999996, 0.7, 0.9, 0.5, -0.7, 0.9, 0.5, 0.7, 0.9, 0.5, -0.59999996, 0.9, 0.39999998, -0.7, 0.9, 0.5, -0.7, 0.9, 0.5, -0.59999996, 0.9, 0.39999998, -0.79999995, 0.9, 0.5, 0.79999995, 0.9, 0.5, -0.59999996, 0.9, 0.39999998, 0.7, 0.9, 0.5, -0.59999996, 0.9, 0.39999998, -0.59999996, 0.9, 0.29999998, -0.79999995, 0.9, 0.5, 0.79999995, 0.9, 0.5, -0.5, 0.9, 0.39999998, -0.59999996, 0.9, 0.39999998, -0.59999996, 0.9, 0.29999998, -0.59999996, 0.9, -0.29999998, -0.79999995, 0.9, 0.5, 0.79999995, 0.9, 0.5, 0.5, 0.9, 0.39999998, -0.5, 0.9, 0.39999998, 0.5, 0.9, 0.39999998, -0.5, 0.9, 0.29999998, -0.5, 0.9, 0.39999998, -0.5, 0.9, 0.29999998, -0.59999996, 0.9, -0.29999998, -0.59999996, 0.9, 0.29999998, 0.5, 0.9, 0.39999998, 0.5, 0.9, 0.29999998, -0.5, 0.9, 0.29999998, 0.5, 0.9, 0.29999998, -0.59999996, 0.9, -0.29999998, -0.5, 0.9, 0.29999998, 0.79999995, 0.9, 0.5, 0.59999996, 0.9, 0.39999998, 0.5, 0.9, 0.39999998, -0.59999996, 0.9, -0.29999998, -0.59999996, 0.9, -0.39999998, -0.79999995, 0.9, 0.5, 0.59999996, 0.9, 0.29999998, -0.59999996, 0.9, -0.29999998, 0.5, 0.9, 0.29999998, 0.79999995, 0.9, 0.5, 0.59999996, 0.9, 0.29999998, 0.59999996, 0.9, 0.39999998, 0.59999996, 0.9, 0.29999998, -0.5, 0.9, -0.29999998, -0.59999996, 0.9, -0.29999998, -0.59999996, 0.9, -0.39999998, -0.79999995, 0.9, -0.5, -0.79999995, 0.9, 0.5, 0.59999996, 0.9, 0.29999998, 0.5, 0.9, -0.29999998, -0.5, 0.9, -0.29999998, -0.5, 0.9, -0.39999998, -0.79999995, 0.9, -0.5, -0.59999996, 0.9, -0.39999998, 0.5, 0.9, -0.29999998, -0.5, 0.9, -0.39999998, -0.5, 0.9, -0.29999998, 0.59999996, 0.9, 0.29999998, 0.59999996, 0.9, -0.29999998, 0.5, 0.9, -0.29999998, 0.79999995, 0.9, 0.5, 0.59999996, 0.9, -0.29999998, 0.59999996, 0.9, 0.29999998, 0.5, 0.9, -0.29999998, 0.5, 0.9, -0.39999998, -0.5, 0.9, -0.39999998, 0.5, 0.9, -0.39999998, -0.79999995, 0.9, -0.5, -0.5, 0.9, -0.39999998, 0.59999996, 0.9, -0.39999998, -0.79999995, 0.9, -0.5, 0.5, 0.9, -0.39999998, 0.79999995, 0.9, 0.5, 0.59999996, 0.9, -0.39999998, 0.59999996, 0.9, -0.29999998, 0.59999996, 0.9, -0.39999998, -0.7, 0.9, -0.5, -0.79999995, 0.9, -0.5, 0.79999995, 0.9, 0.5, 0.7, 0.9, -0.5, 0.59999996, 0.9, -0.39999998, 0.59999996, 0.9, -0.39999998, 0.7, 0.9, -0.5, -0.7, 0.9, -0.5, 0.79999995, 0.9, 0.5, 0.79999995, 0.9, -0.5, 0.7, 0.9, -0.5, 0.7, 0.9, -0.5, -0.7, 0.9, -0.59999996, -0.7, 0.9, -0.5, 0.7, 0.9, -0.5, 0.7, 0.9, -0.59999996, -0.7, 0.9, -0.59999996, 0.7, 1.1, 0.59999996, -0.7, 1.1, 0.59999996, -0.7, 1.1, 0.5, 0.7, 1.1, 0.59999996, -0.7, 1.1, 0.5, 0.7, 1.1, 0.5, 0.7, 1.1, 0.5, -0.7, 1.1, 0.5, -0.79999995, 1.1, -0.5, -0.7, 1.1, 0.5, -0.79999995, 1.1, 0.5, -0.79999995, 1.1, -0.5, 0.79999995, 1.1, 0.5, 0.7, 1.1, 0.5, -0.79999995, 1.1, -0.5, 0.79999995, 1.1, 0.5, -0.79999995, 1.1, -0.5, -0.7, 1.1, -0.5, 0.79999995, 1.1, 0.5, -0.7, 1.1, -0.5, 0.7, 1.1, -0.5, 0.79999995, 1.1, 0.5, 0.7, 1.1, -0.5, 0.79999995, 1.1, -0.5, 0.7, 1.1, -0.5, -0.7, 1.1, -0.5, -0.7, 1.1, -0.59999996, 0.7, 1.1, -0.5, -0.7, 1.1, -0.59999996, 0.7, 1.1, -0.59999996)
+
+[node name="Main" type="Node3D" unique_id=953523607]
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1791761732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+use_collision = true
+size = Vector3(20, 0.5, 30)
+
+[node name="Walls" type="Node3D" parent="." unique_id=1938238147 node_paths=PackedStringArray("wall_south", "wall_east", "wall_north", "wall_west")]
+script = ExtResource("1_jkdf5")
+wall_south = NodePath("WallSouth")
+wall_east = NodePath("WallEast")
+wall_north = NodePath("WallNorth")
+wall_west = NodePath("WallWest")
+
+[node name="WallSouth" type="CSGBox3D" parent="Walls" unique_id=1224692702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 15)
+use_collision = true
+size = Vector3(20, 3, 0.5)
+
+[node name="WallEast" type="CSGBox3D" parent="Walls" unique_id=773488856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 0)
+use_collision = true
+size = Vector3(0.5, 3, 30.5)
+
+[node name="WallNorth" type="CSGBox3D" parent="Walls" unique_id=1673678043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -15)
+use_collision = true
+size = Vector3(20, 3, 0.5)
+
+[node name="WallWest" type="CSGBox3D" parent="Walls" unique_id=604416827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 0)
+use_collision = true
+size = Vector3(0.5, 3, 30.5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=568095667]
+transform = Transform3D(0.70710677, 0.49999997, -0.49999997, 0, 0.70710677, 0.70710677, 0.70710677, -0.49999997, 0.49999997, 0, 10, 20)
+light_energy = 1.5
+shadow_enabled = true
+shadow_opacity = 0.5
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1274028232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+script = ExtResource("1_bo1nx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=302205632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_t2dwb")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player" unique_id=1706295555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5143757, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_t2dwb")
+autoplay = "default"
+frame = 1
+frame_progress = 0.5402218
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1997336616]
+script = ExtResource("3_8gbba")
+target_path = NodePath("../Player")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=365063641]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.96592575, 0.258819, 0, -0.258819, 0.96592575, 0, 6, 18)
+projection = 1
+size = 12.0
+
+[node name="NPC1" type="StaticBody3D" parent="." unique_id=61139408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
+script = ExtResource("6_hibaj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC1" unique_id=1045354365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_t2dwb")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="NPC1" unique_id=1180994131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_fevyy")
+autoplay = "default"
+
+[node name="Suspect1" type="StaticBody3D" parent="." unique_id=1460631679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 3)
+collision_layer = 2
+script = ExtResource("4_jjvhh")
+data = ExtResource("5_344ge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suspect1" unique_id=1769477736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_t2dwb")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Suspect1" unique_id=564016911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_m2va7")
+autoplay = "default"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1488718526]
+
+[node name="InterviewDim" type="ColorRect" parent="UI" unique_id=125707361]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.54901963)
+
+[node name="InterviewPanel" type="Panel" parent="UI" unique_id=1622215539]
+custom_minimum_size = Vector2(500, 350)
+offset_left = 176.0
+offset_top = 94.0
+offset_right = 976.0
+offset_bottom = 554.0
+script = ExtResource("5_21xkr")
+memo = ExtResource("8_ynf5e")
+
+[node name="NameLabel" type="Label" parent="UI/InterviewPanel" unique_id=602135867]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 640.0
+offset_bottom = 64.0
+
+[node name="ReasonLabel" type="Label" parent="UI/InterviewPanel" unique_id=62757956]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 68.0
+offset_right = 760.0
+offset_bottom = 98.0
+
+[node name="ClaimColumn" type="Control" parent="UI/InterviewPanel" unique_id=1985636360]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 130.0
+offset_right = 370.0
+offset_bottom = 351.0
+script = ExtResource("8_6iyac")
+
+[node name="ClaimPaperBG" type="ColorRect" parent="UI/InterviewPanel/ClaimColumn" unique_id=2036995205]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 220.0
+color = Color(0.16862746, 0.34509805, 0.6784314, 1)
+
+[node name="ClaimNameLabel" type="Label" parent="UI/InterviewPanel/ClaimColumn" unique_id=2055478819]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 316.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("9_fdnlq")
+field_type = "name"
+card_side = "claim"
+
+[node name="ClaimBadgeLabel" type="Label" parent="UI/InterviewPanel/ClaimColumn" unique_id=1754750004]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 316.0
+offset_bottom = 72.0
+mouse_filter = 1
+script = ExtResource("9_fdnlq")
+field_type = "badge"
+card_side = "claim"
+
+[node name="ClaimYearsLabel" type="Label" parent="UI/InterviewPanel/ClaimColumn" unique_id=683106344]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 76.0
+offset_right = 316.0
+offset_bottom = 100.0
+mouse_filter = 1
+script = ExtResource("9_fdnlq")
+field_type = "years"
+card_side = "claim"
+
+[node name="ClaimPortraitRect" type="TextureRect" parent="UI/InterviewPanel/ClaimColumn" unique_id=1614664575]
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 0
+offset_left = 190.0
+offset_top = 112.0
+offset_right = 310.0
+offset_bottom = 208.0
+texture = ExtResource("8_d1ilt")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("9_fdnlq")
+field_type = "photo"
+card_side = "claim"
+
+[node name="MemoColumn" type="Control" parent="UI/InterviewPanel" unique_id=560454831]
+anchors_preset = 0
+offset_left = 430.0
+offset_top = 130.0
+offset_right = 760.0
+offset_bottom = 351.0
+script = ExtResource("8_6iyac")
+
+[node name="MemoPaperBG" type="ColorRect" parent="UI/InterviewPanel/MemoColumn" unique_id=644880760]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 220.0
+color = Color(0.16862746, 0.34509805, 0.6784314, 1)
+
+[node name="MemoNameLabel" type="Label" parent="UI/InterviewPanel/MemoColumn" unique_id=479127740]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 316.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("9_fdnlq")
+field_type = "name"
+card_side = "memo"
+
+[node name="MemoBadgeLabel" type="Label" parent="UI/InterviewPanel/MemoColumn" unique_id=253856260]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 316.0
+offset_bottom = 96.0
+mouse_filter = 1
+script = ExtResource("9_fdnlq")
+field_type = "badge"
+card_side = "memo"
+
+[node name="MemoYearsLabel" type="Label" parent="UI/InterviewPanel/MemoColumn" unique_id=278664131]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 76.0
+offset_right = 316.0
+offset_bottom = 100.0
+mouse_filter = 1
+script = ExtResource("9_fdnlq")
+field_type = "years"
+card_side = "memo"
+
+[node name="MemoPortraitRect" type="TextureRect" parent="UI/InterviewPanel/MemoColumn" unique_id=1516278323]
+custom_minimum_size = Vector2(120, 96)
+layout_mode = 0
+offset_left = 190.0
+offset_top = 112.0
+offset_right = 310.0
+offset_bottom = 208.0
+texture = ExtResource("8_d1ilt")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("9_fdnlq")
+field_type = "photo"
+card_side = "memo"
+
+[node name="MarkAllyButton" type="Button" parent="UI/InterviewPanel" unique_id=1320883247]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 375.0
+offset_right = 290.0
+offset_bottom = 435.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ynf5e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d1ilt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6iyac")
+text = "Ally"
+
+[node name="MarkDummyButton" type="Button" parent="UI/InterviewPanel" unique_id=336685583]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 375.0
+offset_right = 680.0
+offset_bottom = 435.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k12tt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h1bgf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3802")
+text = "Dummy"
+
+[node name="CloseButton" type="Button" parent="UI/InterviewPanel" unique_id=1461249032]
+layout_mode = 0
+offset_left = 740.0
+offset_top = 16.0
+offset_right = 784.0
+offset_bottom = 60.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_fdnlq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jkdf5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wsu2k")
+text = "X"
+
+[node name="PerforationLine" type="Control" parent="UI/InterviewPanel" unique_id=986827861]
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 130.0
+offset_right = 402.0
+offset_bottom = 350.0
+script = ExtResource("8_hptm8")
+
+[node name="CorrelationStampLabel" type="Label" parent="UI/InterviewPanel" unique_id=1528343322]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReactionBubbleLabel" type="Label" parent="UI/InterviewPanel" unique_id=244141788]
+visible = false
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_fevyy")
+autowrap_mode = 2
+
+[node name="EndScreen" type="Control" parent="UI" unique_id=732539456]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("7_6bp64")
+
+[node name="ResultLabel" type="Label" parent="UI/EndScreen" unique_id=1967144138]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 250.0
+offset_right = 826.0
+offset_bottom = 350.0
+
+[node name="RestartButton" type="Button" parent="UI/EndScreen" unique_id=170339745]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 380.0
+offset_right = 666.0
+offset_bottom = 430.0
+
+[node name="StatusMenu" type="Control" parent="UI" unique_id=1800326553]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 396.0
+offset_top = 648.0
+offset_right = 756.0
+offset_bottom = 828.0
+mouse_filter = 2
+script = ExtResource("14_wsu2k")
+
+[node name="TimerLabel" type="Label" parent="UI/StatusMenu" unique_id=1824017856]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 340.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 22
+
+[node name="SuspectList" type="VBoxContainer" parent="UI/StatusMenu" unique_id=468568480]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 56.0
+offset_right = 340.0
+offset_bottom = 166.0
+
+[node name="SubmitButton" type="Button" parent="UI/StatusMenu" unique_id=237211971]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 140.0
+offset_right = 340.0
+offset_bottom = 172.0
+text = "Submit Decision"
+
+[node name="StatusTab" type="Button" parent="UI" unique_id=870961270]
+offset_left = 506.0
+offset_top = 604.0
+offset_right = 646.0
+offset_bottom = 640.0
+text = "Status"
+
+[node name="DialogueBox" type="Control" parent="UI" unique_id=1558222947]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PortraitRect" type="TextureRect" parent="UI/DialogueBox" unique_id=2121860552]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpeakerLabel" type="Label" parent="UI/DialogueBox" unique_id=261141779]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DialogueTextLabel" type="Label" parent="UI/DialogueBox" unique_id=2015178838]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AdvanceButton" type="Button" parent="UI/DialogueBox" unique_id=746761780]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=243604478]
+environment = SubResource("Environment_m2va7")
+
+[node name="OfficeTableWhite1x101" type="MeshInstance3D" parent="." unique_id=1360079027]
+transform = Transform3D(-4.371139e-07, 0, 4, 0, 1.5, 0, -10, 0, -1.7484555e-07, 0, 0, 0)
+mesh = ExtResource("14_jkdf5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="OfficeTableWhite1x101" unique_id=1283843815]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OfficeTableWhite1x101/StaticBody3D" unique_id=499801932]
+shape = SubResource("ConcavePolygonShape3D_jkdf5")
+
+[connection signal="pressed" from="UI/StatusMenu/SubmitButton" to="UI/StatusMenu" method="_on_submit_button_pressed"]
+[connection signal="pressed" from="UI/StatusTab" to="UI/StatusMenu" method="_on_status_tab_pressed"]

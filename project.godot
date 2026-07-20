@@ -1,0 +1,47 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Office-KickOff"
+run/main_scene="uid://b5m8fpa7km47b"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://vxmhkr1rnnb6"
+Sfx="*uid://by3anbcfetrev"
+
+[display]
+
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="uid://bh81rd6bpuo7e"
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="suspects"
+3d_physics/layer_3="walls"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

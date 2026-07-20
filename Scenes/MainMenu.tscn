@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b5m8fpa7km47b"]
+
+[ext_resource type="Script" uid="uid://y3dcr2ct7wdn" path="res://Script/main_menu.gd" id="1_853f1"]
+[ext_resource type="Texture2D" uid="uid://b3dgsiqgh6r6u" path="res://Assets/STARTING SCREEN.png" id="1_tt5f1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2dwb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0i7f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3k45"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6kt4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brsag"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5yxf"]
+
+[node name="Control" type="Control" unique_id=128778294]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_853f1")
+
+[node name="BackgroundRect" type="TextureRect" parent="." unique_id=518058835]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_tt5f1")
+
+[node name="StartButton" type="Button" parent="." unique_id=300759308]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 330.0
+offset_right = 975.0
+offset_bottom = 390.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t2dwb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_n0i7f")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k3k45")
+text = "Start"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="." unique_id=1453418170]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 395.0
+offset_right = 975.0
+offset_bottom = 455.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x6kt4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_brsag")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5yxf")
+text = "Quit"
+alignment = 0
